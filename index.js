@@ -59,7 +59,6 @@ const fi = (function() {
 
     last: function(array, n) {
       return (n ? array.slice(-n) : array[array.length-1])
-      
     },
 
     compact: function(array) {
@@ -101,11 +100,13 @@ const fi = (function() {
         }
       }
       else {
-        for (let e of array) {
-          if (!uniqArray.includes(e)) {
-            uniqArray.push(e);
-          }
-        }
+        uniqArray = Array.from(new Set(array))
+        // The Set object lets you store unique values of any type, whether primitive values or object references.
+        // for (let e of array) {
+        //   if (!uniqArray.includes(e)) {
+        //     uniqArray.push(e);
+        //   }
+        // }
       }
       return uniqArray;
     },
@@ -133,7 +134,7 @@ const fi = (function() {
           objectFns.push(key);
         }
       }
-      return objectFns;
+      return objectFns.sort();
     }
 
   }
